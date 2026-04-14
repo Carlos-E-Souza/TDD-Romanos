@@ -41,5 +41,7 @@ TEST_CASE("Numeros romanos - compostos e limites", "[romanos]") {
 TEST_CASE("Numeros romanos - erros e tolerancias", "[romanos]") {
   REQUIRE(romanos_para_decimal("") == -1);
   REQUIRE(romanos_para_decimal("IIIIVVVVXXXXLLLLCCCCDDDDMMMMMMA") == -1);
+  REQUIRE(romanos_para_decimal("MMMI") == -1);
+  REQUIRE(romanos_para_decimal("MMMM") == -1);
 }
 
