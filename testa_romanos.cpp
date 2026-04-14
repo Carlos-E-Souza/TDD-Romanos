@@ -23,3 +23,7 @@ TEST_CASE("Numeros romanos - adicoes simples", "[romanos]") {
   REQUIRE(romanos_para_decimal("VIII") == 8);
 }
 
+TEST_CASE("Numeros romanos - subtracao basica", "[romanos]") {
+  REQUIRE(romanos_para_decimal("IV") == 4);
+}
+
