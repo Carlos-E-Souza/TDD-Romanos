@@ -32,3 +32,7 @@ TEST_CASE("Numeros romanos - subtracao basica", "[romanos]") {
   REQUIRE(romanos_para_decimal("CM") == 900);
 }
 
+TEST_CASE("Numeros romanos - compostos e limites", "[romanos]") {
+  REQUIRE(romanos_para_decimal("XIV") == 14);
+}
+
