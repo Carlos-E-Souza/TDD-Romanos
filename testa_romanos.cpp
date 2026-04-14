@@ -14,6 +14,10 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]") {
   REQUIRE(romanos_para_decimal("M") == 1000);
 }
 
+TEST_CASE("Numeros romanos - adicoes simples", "[romanos]") {
+  REQUIRE(romanos_para_decimal("II") == 2);
+}
+
 /*
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
   REQUIRE(romanos_para_decimal("G") == -1);
