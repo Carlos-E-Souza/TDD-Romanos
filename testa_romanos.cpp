@@ -55,5 +55,8 @@ TEST_CASE("Numeros romanos - regras gramaticais", "[romanos]") {
   REQUIRE(romanos_para_decimal("IIII") == -1);
   REQUIRE(romanos_para_decimal("XXXX") == -1);
   REQUIRE(romanos_para_decimal("CCCC") == -1);
+  REQUIRE(romanos_para_decimal("VV") == -1);
+  REQUIRE(romanos_para_decimal("LL") == -1);
+  REQUIRE(romanos_para_decimal("DD") == -1);
 }
 
