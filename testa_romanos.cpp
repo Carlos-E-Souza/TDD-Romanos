@@ -28,5 +28,6 @@ TEST_CASE("Numeros romanos - subtracao basica", "[romanos]") {
   REQUIRE(romanos_para_decimal("IX") == 9);
   REQUIRE(romanos_para_decimal("XL") == 40);
   REQUIRE(romanos_para_decimal("XC") == 90);
+  REQUIRE(romanos_para_decimal("CD") == 400);
 }
 
