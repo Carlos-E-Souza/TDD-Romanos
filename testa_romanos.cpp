@@ -35,5 +35,6 @@ TEST_CASE("Numeros romanos - subtracao basica", "[romanos]") {
 TEST_CASE("Numeros romanos - compostos e limites", "[romanos]") {
   REQUIRE(romanos_para_decimal("XIV") == 14);
   REQUIRE(romanos_para_decimal("MCMXCIV") == 1994);
+  REQUIRE(romanos_para_decimal("MMM") == 3000);
 }
 
