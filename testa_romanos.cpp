@@ -51,3 +51,9 @@ TEST_CASE("Numeros romanos - erros e tolerancias", "[romanos]") {
   REQUIRE(romanos_para_decimal("Mm") == -1);
 }
 
+TEST_CASE("Numeros romanos - regras gramaticais", "[romanos]") {
+  REQUIRE(romanos_para_decimal("IIII") == -1);
+  REQUIRE(romanos_para_decimal("XXXX") == -1);
+  REQUIRE(romanos_para_decimal("CCCC") == -1);
+}
+
