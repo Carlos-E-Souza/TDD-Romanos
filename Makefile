@@ -9,7 +9,7 @@ test: testa_romanos
 	./testa_romanos
 	
 cpplint: testa_romanos.cpp   romanos.cpp romanos.hpp
-	cpplint --exclude=catch.hpp --exclude=cpplint.py --exclude=README.md --exclude=leia_me.txt *.*
+	cpplint --exclude=catch.hpp --exclude=cpplint.py --exclude=README.md --exclude=leia_me.txt --exclude=romanos.o *.*
 	
 gcov: testa_romanos.cpp   romanos.cpp romanos.hpp 
 	g++ -std=c++11 -Wall -Wall -fprofile-arcs -ftest-coverage -c romanos.cpp
