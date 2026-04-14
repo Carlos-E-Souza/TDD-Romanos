@@ -38,3 +38,7 @@ TEST_CASE("Numeros romanos - compostos e limites", "[romanos]") {
   REQUIRE(romanos_para_decimal("MMM") == 3000);
 }
 
+TEST_CASE("Numeros romanos - erros e tolerancias", "[romanos]") {
+  REQUIRE(romanos_para_decimal("") == -1);
+}
+
