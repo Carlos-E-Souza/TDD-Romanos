@@ -18,11 +18,6 @@ TEST_CASE("Numeros romanos - adicoes simples", "[romanos]") {
   REQUIRE(romanos_para_decimal("II") == 2);
   REQUIRE(romanos_para_decimal("III") == 3);
   REQUIRE(romanos_para_decimal("XX") == 20);
+  REQUIRE(romanos_para_decimal("VI") == 6);
 }
 
-/*
-TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
-  REQUIRE(romanos_para_decimal("G") == -1);
-  REQUIRE(romanos_para_decimal("i") == -1);
-}
-*/
