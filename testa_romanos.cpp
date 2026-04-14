@@ -46,5 +46,8 @@ TEST_CASE("Numeros romanos - erros e tolerancias", "[romanos]") {
   REQUIRE(romanos_para_decimal("A") == -1);
   REQUIRE(romanos_para_decimal("XI A") == -1);
   REQUIRE(romanos_para_decimal("123") == -1);
+  REQUIRE(romanos_para_decimal("i") == -1);
+  REQUIRE(romanos_para_decimal("v") == -1);
+  REQUIRE(romanos_para_decimal("Mm") == -1);
 }
 
