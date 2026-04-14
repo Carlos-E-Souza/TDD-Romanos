@@ -20,5 +20,6 @@ TEST_CASE("Numeros romanos - adicoes simples", "[romanos]") {
   REQUIRE(romanos_para_decimal("XX") == 20);
   REQUIRE(romanos_para_decimal("VI") == 6);
   REQUIRE(romanos_para_decimal("VII") == 7);
+  REQUIRE(romanos_para_decimal("VIII") == 8);
 }
 
