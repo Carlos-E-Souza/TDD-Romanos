@@ -25,5 +25,6 @@ TEST_CASE("Numeros romanos - adicoes simples", "[romanos]") {
 
 TEST_CASE("Numeros romanos - subtracao basica", "[romanos]") {
   REQUIRE(romanos_para_decimal("IV") == 4);
+  REQUIRE(romanos_para_decimal("IX") == 9);
 }
 
