@@ -1,0 +1,94 @@
+        -:    0:Source:romanos.cpp
+        -:    0:Graph:romanos.gcno
+        -:    0:Data:romanos.gcda
+        -:    0:Runs:1
+        -:    1:// Copyright 2026 Carlos
+        -:    2:#include "./romanos.hpp"  // NOLINT(build/include_subdir)
+        -:    3:#include <cstring>
+        -:    4:
+        -:    5:namespace {
+        -:    6:
+        -:    7:// Extrai o valor do caractere romano; retorna -1 se for invalido.
+      176:    8:int obter_valor_algarismo(char algarismo) {
+      176:    9:  switch (algarismo) {
+       54:   10:    case 'I': return 1;
+       18:   11:    case 'V': return 5;
+       26:   12:    case 'X': return 10;
+       10:   13:    case 'L': return 50;
+       21:   14:    case 'C': return 100;
+       10:   15:    case 'D': return 500;
+       31:   16:    case 'M': return 1000;
+        6:   17:    default: return -1;
+        -:   18:  }
+        -:   19:}
+        -:   20:
+        -:   21:// Retorna se a entrada contem erros de tamanho ou gramaticais (repeticoes).
+       44:   22:bool possui_erros_basicos(const char* num_romano) {
+       44:   23:  if (num_romano == nullptr) {
+    #####:   24:    return true;
+        -:   25:  }
+       44:   26:  int tamanho = std::strlen(num_romano);
+       44:   27:  if (tamanho == 0 || tamanho > 30) {
+        2:   28:    return true;
+        -:   29:  }
+       42:   30:  int repeticoes = 1;
+      124:   31:  for (int i = 0; i < tamanho; i++) {
+       95:   32:    if (obter_valor_algarismo(num_romano[i]) == -1) {
+        6:   33:      return true;  // Contem espacos, minusculas ou caracteres invalidos
+        -:   34:    }
+       89:   35:    if (i > 0) {
+       51:   36:      if (num_romano[i] == num_romano[i - 1]) {
+       26:   37:        repeticoes++;
+       26:   38:        if (repeticoes == 4) {
+        4:   39:          return true;  // Limite aditivo de 3 atingido (ex: IIII, XXXX)
+        -:   40:        }
+       22:   41:        if (repeticoes == 2 && (num_romano[i] == 'V' ||
+       13:   42:            num_romano[i] == 'L' || num_romano[i] == 'D')) {
+        3:   43:          return true;  // Bases 5 nao repetem em serie
+        -:   44:        }
+        -:   45:      } else {
+       25:   46:        repeticoes = 1;
+        -:   47:      }
+        -:   48:    }
+        -:   49:  }
+       29:   50:  return false;
+        -:   51:}
+        -:   52:
+        -:   53:// Regra estrita de quais subtracoes sao aceitas.
+       16:   54:bool eh_subtracao_valida(char menor, char maior) {
+       16:   55:  if (menor == 'I') return (maior == 'V' || maior == 'X');
+       10:   56:  if (menor == 'X') return (maior == 'L' || maior == 'C');
+       6*:   57:  if (menor == 'C') return (maior == 'D' || maior == 'M');
+        3:   58:  return false;
+        -:   59:}
+        -:   60:
+        -:   61:}  // namespace
+        -:   62:
+       44:   63:int romanos_para_decimal(char const * num_romano) {
+       44:   64:  if (possui_erros_basicos(num_romano)) {
+       15:   65:    return -1;
+        -:   66:  }
+       29:   67:  int total = 0;
+       29:   68:  int tamanho = std::strlen(num_romano);
+        -:   69:
+       71:   70:  for (int i = 0; i < tamanho; i++) {
+       48:   71:    int atual = obter_valor_algarismo(num_romano[i]);
+       48:   72:    if (i + 1 < tamanho) {
+       33:   73:      int proximo = obter_valor_algarismo(num_romano[i + 1]);
+       33:   74:      if (atual < proximo) {
+       16:   75:        if (!eh_subtracao_valida(num_romano[i], num_romano[i + 1])) {
+        6:   76:          return -1;
+        -:   77:        }
+       10:   78:        total += (proximo - atual);
+       10:   79:        i++;  // Pula o proximo caractere, ja processado
+       10:   80:        continue;
+        -:   81:      }
+        -:   82:    }
+       32:   83:    total += atual;
+        -:   84:  }
+       23:   85:  if (total > 3000) {
+        1:   86:    return -1;
+        -:   87:  }
+        -:   88:
+       22:   89:  return total;
+        -:   90:}
